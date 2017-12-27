@@ -46,7 +46,7 @@ public class MSVector2D {
     }
     
     public func toCGPoint() -> CGPoint {
-        return CGPointMake(CGFloat(x), CGFloat(y))
+        return CGPoint(x: CGFloat(x), y: CGFloat(y))
     }
 }
 

@@ -31,12 +31,12 @@ class MSBarView: UIView {
         }
     }
 
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         if let (x, y, z) = getDataTriple() {
-            let rs = [x, y, z].enumerate().map {(i, x) in toCGRect(i, x: x) }
+            let rs = [x, y, z].enumerated().map { elem in toCGRect(i: elem.offset, x: elem.element) }
             for r in rs {
-                drawBar(r)
+                drawBar(rect: r)
             }
         }
     }
@@ -49,7 +49,7 @@ class MSBarView: UIView {
     
     func drawBar(rect: CGRect) {
         let bezier = UIBezierPath(rect: rect)
-        UIColor.blueColor().setFill()
+        UIColor.blue.setFill()
         bezier.fill()
     }
 }

@@ -36,42 +36,42 @@ class MSPeripheralManager: NSObject, CBPeripheralManagerDelegate {
         
     }
     
-    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
-        delegate.log("state: \(peripheral.state.rawValue)")
-        let props: CBCharacteristicProperties = [.Read, .Write, .Notify]
-        let permissions: CBAttributePermissions = [.Readable, .Writeable]
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+        delegate.log(s: "state: \(peripheral.state.rawValue)")
+        let props: CBCharacteristicProperties = [.read, .write, .notify]
+        let permissions: CBAttributePermissions = [.readable, .writeable]
         let characteristic = CBMutableCharacteristic(type: MSPeripheralManager.charUuid,
             properties: props, value: nil, permissions: permissions)
 
         let service = CBMutableService(type: MSPeripheralManager.servUuid, primary: true)
         service.characteristics = [characteristic]
 
-        manager!.addService(service)
+        manager!.add(service)
         let data = [CBAdvertisementDataServiceUUIDsKey: [MSPeripheralManager.servUuid]]
         manager!.startAdvertising(data)
     }
     
     func peripheralManager(peripheral: CBPeripheralManager, didAddService service: CBService, error: NSError?) {
         if let e = error {
-            delegate.log("ERROR: \(e)")
+            delegate.log(s: "ERROR: \(e)")
         } else {
-            delegate.log("service added: \(service.UUID)")
+            delegate.log(s: "service added: \(service.uuid)")
         }
     }
     
-    func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?) {
+    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if let e = error {
-            delegate.log("ERROR: \(e)")
+            delegate.log(s: "ERROR: \(e)")
         } else {
-            delegate.log("advertise started")
+            delegate.log(s: "advertise started")
         }
     }
     
     func peripheralManager(peripheral: CBPeripheralManager, didReceiveWriteRequests requests: [CBATTRequest]) {
         let req = requests.first
-        let s = NSString(data: req!.value!, encoding: NSUTF8StringEncoding)!
-        let arr = s.componentsSeparatedByString(":")
-        delegate.log("command received: \(s)")
+        let s = NSString(data: req!.value!, encoding: String.Encoding.utf8.rawValue)!
+        let arr = s.components(separatedBy: ":")
+        delegate.log(s: "command received: \(s)")
         switch(arr.first!) {
         case "start logging":
             delegate.startLogging()
@@ -92,17 +92,17 @@ class MSPeripheralManager: NSObject, CBPeripheralManagerDelegate {
         case "introduce":
             delegate.introduce()
         case "write":
-            delegate.log("\(arr[1])")
+            delegate.log(s: "\(arr[1])")
         default:
-            manager!.respondToRequest(req!, withResult: .InvalidHandle)
+            manager!.respond(to: req!, withResult: .invalidHandle)
         }
-        manager!.respondToRequest(requests.first!, withResult: .Success)
+        manager!.respond(to: requests.first!, withResult: .success)
     }
     
     func peripheralManager(peripheral: CBPeripheralManager, didReceiveReadRequest request: CBATTRequest) {
         let s = "\(delegate.getData())"
-        request.value = s.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true)
-        manager!.respondToRequest(request, withResult: .Success)
+        request.value = s.data(using: String.Encoding.utf8, allowLossyConversion:true)
+        manager!.respond(to: request, withResult: .success)
     }
     
 }

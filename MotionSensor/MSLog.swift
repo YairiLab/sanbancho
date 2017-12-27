@@ -9,8 +9,8 @@
 import CoreLocation
 
 class MSLog {
-    let file: NSFileHandle
-    init(file: NSFileHandle) {
+    let file: FileHandle
+    init(file: FileHandle) {
         self.file = file
     }
     
@@ -19,7 +19,7 @@ class MSLog {
         let sGyro = gyro != nil ? NSString(format: "%.13f,%.13f,%.13f", gyro!.0, gyro!.1, gyro!.2) : ",,"
         let sAcc = acc != nil ? NSString(format: "%.13f,%.13f,%.13f", acc!.0, acc!.1, acc!.2) : ",,"
         let line = "\(tick),\(sGyro),\(sAcc)\n"
-        file.writeData(line.dataUsingEncoding(NSUTF8StringEncoding)!)
+        file.write(line.data(using: String.Encoding.utf8)!)
     }
     
     func close() {
@@ -29,15 +29,15 @@ class MSLog {
     class func open(filename: String) -> MSLog {
         let fullpath = MSResource.getDocDirURL().path!
                 + "/" + filename
-        MSResource.createFile(fullpath)
-        let file = NSFileHandle(forWritingAtPath: fullpath)
+        MSResource.createFile(path: fullpath)
+        let file = FileHandle(forWritingAtPath: fullpath)
         return MSLog(file: file!)
     }
     
-    class func makeFileName(date: NSDate) -> String {
-        let format = NSDateFormatter()
+    class func makeFileName(date: Date) -> String {
+        let format = DateFormatter()
         format.dateFormat = "yyyyMMdd_HHmmss"
-        return format.stringFromDate(date) + ".csv"
+        return format.string(from: date) + ".csv"
     }
 
 }
