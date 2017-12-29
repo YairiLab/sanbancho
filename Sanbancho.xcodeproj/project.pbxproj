@@ -121,6 +121,7 @@
 				TargetAttributes = {
 					4AB3A5A81BD3D25000B701D7 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = EJ9YN4K3N2;
 						LastSwiftMigration = 0920;
 					};
 				};
@@ -283,6 +284,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EJ9YN4K3N2;
 				INFOPLIST_FILE = MotionSensor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -303,6 +305,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EJ9YN4K3N2;
 				INFOPLIST_FILE = MotionSensor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
