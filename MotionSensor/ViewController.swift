@@ -15,7 +15,7 @@ import C4
 class ViewController: CanvasController, MSPeripheralManagerDelegate {
     var timer: C4.Timer? = nil
     var logger: MSLog? = nil
-    let startTime = NSDate()
+    let startTime = Date()
     let sensor = MSSensor()
     let speaker = MSSpeechSynthesizer()
     var peripheral: MSPeripheralManager!
@@ -48,7 +48,7 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     
     func stopUpdate() {
         sensor.stop()
-        view.backgroundColor = UIColor.darkGray
+        canvas.backgroundColor = C4Grey
         if let t = timer {
             t.stop()
             timer = nil
@@ -60,7 +60,7 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
             stopLogging()
         }
         speak("log start")
-        logger = MSLog.open(filename: MSLog.makeFileName(date: startTime as Date))
+        logger = MSLog.open(filename: MSLog.makeFileName(date: startTime))
     }
     
     func stopLogging() {
