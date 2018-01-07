@@ -93,7 +93,7 @@ class ViewController: UIViewController, MSPeripheralManagerDelegate {
     }
     
     func speak(s: String) {
-        speaker.speak(s: s)
+        speaker.speak(s)
     }
     
     func introduce() {

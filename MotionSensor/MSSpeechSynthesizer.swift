@@ -9,19 +9,21 @@
 import AVFoundation
 
 public class MSSpeechSynthesizer: NSObject {
-    let speaker: AVSpeechSynthesizer
+    let _speaker: AVSpeechSynthesizer
+    let _voice:   AVSpeechSynthesisVoice
     
     public override init() {
-        speaker = AVSpeechSynthesizer()
+        _speaker = AVSpeechSynthesizer()
+        _voice = AVSpeechSynthesisVoice(language: "en-us")!
     }
     
-    public func speak(s: String) {
-        if speaker.isSpeaking {
-            speaker.stopSpeaking(at: .immediate)
+    public func speak(_ s: String) {
+        if _speaker.isSpeaking {
+            _speaker.stopSpeaking(at: .immediate)
         }
         let ut = AVSpeechUtterance(string: s)
-        ut.voice = AVSpeechSynthesisVoice(language: "en-us")
+        ut.voice = _voice
         ut.rate = 0.5
-        speaker.speak(ut)
+        _speaker.speak(ut)
     }
 }
