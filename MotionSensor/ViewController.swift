@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import CoreMotion
-import AVFoundation
-import CoreBluetooth
 import C4
 
 class ViewController: CanvasController, MSPeripheralManagerDelegate {
@@ -43,7 +40,7 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     func startUpdate() {
         sensor.start()
         canvas.backgroundColor = C4Pink
-        timer = C4.Timer(interval: 1) { () in
+        timer = C4.Timer(interval: 0.02) { () in
             self.tick()
         }
         timer?.start()

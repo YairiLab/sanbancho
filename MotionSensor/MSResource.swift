@@ -13,14 +13,14 @@ class MSResource {
         return Bundle.main.url(forResource: name, withExtension: type)!
     }
 
-    class func loadBundleResource(name: String, type: String) -> NSData {
+    class func loadBundleResource(name: String, type: String) -> Data {
         let url = getURL(name: name, type: type)
-        return NSData(contentsOf: url)!
+        return try! Data(contentsOf: url)
     }
 
-    class func getDocDirURL() -> NSURL {
+    class func getDocDirURL() -> URL {
         let docDir = "\(NSHomeDirectory())/Documents/"
-        return NSURL(fileURLWithPath: docDir)
+        return URL(fileURLWithPath: docDir)
     }
     
     class func createFile(path: String) {

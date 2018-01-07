@@ -10,12 +10,12 @@ import CoreLocation
 import C4
 
 class MSLog {
-    let file: FileHandle
+    private let _file: FileHandle
     private init(file: FileHandle) {
-        self.file = file
+        _file = file
     }
     class func open(filename: String) -> MSLog {
-        let fullpath = MSResource.getDocDirURL().path!
+        let fullpath = MSResource.getDocDirURL().path
             + "/" + filename
         MSResource.createFile(path: fullpath)
         let file = FileHandle(forWritingAtPath: fullpath)
@@ -29,11 +29,11 @@ class MSLog {
         let sAcc = acc == nil ? ",," :
                 NSString(format: "%.13f,%.13f,%.13f", acc!.x, acc!.y, acc!.z)
         let line = "\(tick),\(sGyro),\(sAcc)\n"
-        file.write(line.data(using: String.Encoding.utf8)!)
+        _file.write(line.data(using: String.Encoding.utf8)!)
     }
     
     func close() {
-        file.closeFile()
+        _file.closeFile()
     }
     
     class func makeFileName(date: Date) -> String {
