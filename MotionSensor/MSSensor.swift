@@ -11,34 +11,32 @@ import CoreMotion
 import C4
 
 class MSSensor: NSObject {
-    let motion = CMMotionManager()
+    let _motion = CMMotionManager()
     
     func start() {
-        motion.startAccelerometerUpdates()
-        motion.startGyroUpdates()
+        _motion.startAccelerometerUpdates()
+        _motion.startGyroUpdates()
     }
     
     func stop() {
-        motion.stopAccelerometerUpdates()
-        motion.stopGyroUpdates()
+        _motion.stopAccelerometerUpdates()
+        _motion.stopGyroUpdates()
     }
     
     func getRotationRate() -> Vector? {
-        if let data = motion.gyroData {
-            let r = data.rotationRate
-            return Vector(x: r.x, y: r.y, z: r.z)
-        } else {
+        guard let data = _motion.gyroData else {
             return nil
         }
+        let r = data.rotationRate
+        return Vector(x: r.x, y: r.y, z: r.z)
     }
 
     func getAcceleration() -> Vector? {
-        if let data = motion.accelerometerData {
-            let a = data.acceleration
-            return Vector(x: a.x, y: a.y, z: a.z)
-        } else {
+        guard let data = _motion.accelerometerData else {
             return nil
         }
+        let a = data.acceleration
+        return Vector(x: a.x, y: a.y, z: a.z)
     }
     
     func getData() -> (Vector?, Vector?) {
