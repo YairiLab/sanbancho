@@ -1,0 +1,3 @@
+[submodule "C4iOS"]
+	path = C4iOS
+	url = git@github.com:C4Labs/C4iOS.git
