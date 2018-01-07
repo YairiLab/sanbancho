@@ -11,14 +11,14 @@ import CoreBluetooth
 import C4
 
 protocol MSPeripheralManagerDelegate {
-    func log(s: String)
+    func log(_ s: String)
     func getData() -> (Vector?, Vector?)
     func startLogging()
     func stopLogging()
     func startUpdate()
     func stopUpdate()
     func beep()
-    func speak(s: String)
+    func speak(_ s: String)
     func introduce()
 }
 
@@ -49,7 +49,7 @@ class MSPeripheralManager: NSObject, CBPeripheralManagerDelegate {
     
     // CBPeripheralManagerがインスタンス化されて、状態が変わったら呼ばれる
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        delegate.log(s: "state: \(peripheral.state.rawValue)")
+        delegate.log("state: \(peripheral.state.rawValue)")
         _manager!.add(_service)
         let data = [CBAdvertisementDataServiceUUIDsKey: [MSPeripheralManager.servUuid]]
         _manager!.startAdvertising(data)
@@ -58,9 +58,9 @@ class MSPeripheralManager: NSObject, CBPeripheralManagerDelegate {
     // 宣伝を開始したら呼ばれる
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if let e = error {
-            delegate.log(s: "ERROR: \(e)")
+            delegate.log("ERROR: \(e)")
         } else {
-            delegate.log(s: "advertise started")
+            delegate.log("advertise started")
         }
     }
     
@@ -71,7 +71,7 @@ class MSPeripheralManager: NSObject, CBPeripheralManagerDelegate {
         let req = requests.first
         let s = NSString(data: req!.value!, encoding: String.Encoding.utf8.rawValue)!
         let arr = s.components(separatedBy: ":")
-        delegate.log(s: "command received: \(s)")
+        delegate.log("command received: \(s)")
         switch(arr.first!) {
         case "start logging":
             delegate.startLogging()
@@ -92,7 +92,7 @@ class MSPeripheralManager: NSObject, CBPeripheralManagerDelegate {
         case "introduce":
             delegate.introduce()
         case "write":
-            delegate.log(s: "\(arr[1])")
+            delegate.log("\(arr[1])")
         default:
             _manager!.respond(to: req!, withResult: .invalidHandle)
         }

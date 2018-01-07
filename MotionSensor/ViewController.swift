@@ -67,37 +67,37 @@ class ViewController: UIViewController, MSPeripheralManagerDelegate {
         if let _ = logger {
             stopLogging()
         }
-        speak(s: "log start")
+        speak("log start")
         logger = MSLog.open(filename: MSLog.makeFileName(date: startTime as Date))
     }
     
     func stopLogging() {
         if let l = logger {
-            speak(s: "log stop")
+            speak("log stop")
             l.close()
             logger = nil
         }
     }
     
     func beep() {
-        speak(s: "peep")
+        speak("peep")
     }
     
     func getData() -> (Vector?, Vector?) {
         return prevData
     }
     
-    func log(s: String) {
+    func log(_ s: String) {
         label.text = s
         print(s)
     }
     
-    func speak(s: String) {
+    func speak(_ s: String) {
         speaker.speak(s)
     }
     
     func introduce() {
-        speak(s: UIDevice.current.name)
+        speak(UIDevice.current.name)
     }
     
     @objc func tick(timer: ATimer) {
