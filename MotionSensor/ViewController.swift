@@ -26,10 +26,10 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     @IBOutlet weak var label: UILabel!
     
     override func setup() {
-        let gesture = UITapGestureRecognizer()
-        gesture.addTarget(self, action: #selector(ViewController.tapped))
+        let gesture = canvas.addTapGestureRecognizer { _, _, _ in
+            self.tapped()
+        }
         gesture.numberOfTapsRequired = 3
-        view.addGestureRecognizer(gesture)
         
         peripheral = MSPeripheralManager(delegate: self)
 
@@ -37,20 +37,10 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
         canvas.add(rectangle)
     }
     
-    @objc func tapped(sender: UITapGestureRecognizer) {
-        beep()
-        if let _ = timer {
-            stopLogging()
-            stopUpdate()
-        } else {
-            startUpdate()
-            startLogging()
-        }
-    }
     
     func startUpdate() {
         sensor.start()
-        view.backgroundColor = UIColor.red
+        canvas.backgroundColor = C4Pink
         timer = C4.Timer(interval: 0.02) { () in
             self.tick()
         }
@@ -117,5 +107,17 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
         }
         logger?.write(tickCount: -startTime.timeIntervalSinceNow, gyro: r, acc: a)
     }
+    
+    func tapped() {
+        beep()
+        if let _ = timer {
+            stopLogging()
+            stopUpdate()
+        } else {
+            startUpdate()
+            startLogging()
+        }
+    }
+
 }
 
