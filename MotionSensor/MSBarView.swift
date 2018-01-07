@@ -11,7 +11,10 @@ import C4
 
 class MSBarView: UIView {
     private var data: [Double] = []
-    
+    private let rectangles: [Rectangle] = []
+//    init(frame: CGFrame) {
+//        
+//    }
     var relativeCenter: Vector {
         get {
             let size = self.frame.size

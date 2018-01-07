@@ -12,9 +12,8 @@ import AVFoundation
 import CoreBluetooth
 import C4
 
-typealias ATimer = UIKit.Timer
 class ViewController: CanvasController, MSPeripheralManagerDelegate {
-    var timer: ATimer? = nil
+    var timer: C4.Timer? = nil
     var logger: MSLog? = nil
     let startTime = NSDate()
     let sensor = MSSensor()
@@ -27,18 +26,15 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     @IBOutlet weak var label: UILabel!
     
     override func setup() {
-        let rectangle = Rectangle(frame: Rect(0, 0, 100, 200))
-        canvas.add(rectangle)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
         let gesture = UITapGestureRecognizer()
         gesture.addTarget(self, action: #selector(ViewController.tapped))
         gesture.numberOfTapsRequired = 3
         view.addGestureRecognizer(gesture)
         
         peripheral = MSPeripheralManager(delegate: self)
+
+        let rectangle = Rectangle(frame: Rect(0, 0, 100, 200))
+        canvas.add(rectangle)
     }
     
     @objc func tapped(sender: UITapGestureRecognizer) {
@@ -55,14 +51,16 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     func startUpdate() {
         sensor.start()
         view.backgroundColor = UIColor.red
-        timer = Timer.scheduledTimer(timeInterval: 0.02,
-            target: self, selector: #selector(ViewController.tick), userInfo: nil, repeats: true)
+        timer = C4.Timer(interval: 0.02) { () in
+            self.tick()
+        }
     }
+    
     func stopUpdate() {
         sensor.stop()
         view.backgroundColor = UIColor.darkGray
         if let t = timer {
-            t.invalidate()
+            t.stop()
             timer = nil
         }
     }
@@ -104,7 +102,7 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
         speak(UIDevice.current.name)
     }
     
-    @objc func tick(timer: ATimer) {
+    func tick() {
         prevData = sensor.getData()
         let (r, a) = prevData
         if let data = r {
