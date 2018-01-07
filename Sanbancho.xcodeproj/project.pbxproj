@@ -19,7 +19,68 @@
 		4AFCC2291CE8755D00017B4D /* MSSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2161CE8755D00017B4D /* MSSpeechSynthesizer.swift */; };
 		4AFCC22A1CE8755D00017B4D /* MSVector2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2171CE8755D00017B4D /* MSVector2D.swift */; };
 		4AFCC22C1CE8755D00017B4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2191CE8755D00017B4D /* ViewController.swift */; };
+		E661084020022D34009E5047 /* C4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E661083720022D09009E5047 /* C4.framework */; };
+		E661084120022D34009E5047 /* C4.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E661083720022D09009E5047 /* C4.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E661083620022D09009E5047 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E661082E20022D09009E5047 /* C4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614F824319DB5ED3001DF1D4;
+			remoteInfo = "C4-iOS";
+		};
+		E661083820022D09009E5047 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E661082E20022D09009E5047 /* C4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614F824E19DB5ED4001DF1D4;
+			remoteInfo = "C4Tests-iOS";
+		};
+		E661083A20022D09009E5047 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E661082E20022D09009E5047 /* C4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 610A6A4E1F928E1B003B841A;
+			remoteInfo = "C4-tvOS";
+		};
+		E661083C20022D09009E5047 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E661082E20022D09009E5047 /* C4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 610A6A561F928E1B003B841A;
+			remoteInfo = "C4Tests-tvOS";
+		};
+		E661083E20022D09009E5047 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E661082E20022D09009E5047 /* C4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A96F505A1B5385A5002B3A46;
+			remoteInfo = C4App;
+		};
+		E661084220022D34009E5047 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E661082E20022D09009E5047 /* C4.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 614F824219DB5ED3001DF1D4;
+			remoteInfo = "C4-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E661084420022D34009E5047 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E661084120022D34009E5047 /* C4.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4AA82A991BD50CC3008D2095 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -37,6 +98,7 @@
 		4AFCC2161CE8755D00017B4D /* MSSpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSSpeechSynthesizer.swift; path = MotionSensor/MSSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		4AFCC2171CE8755D00017B4D /* MSVector2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSVector2D.swift; path = MotionSensor/MSVector2D.swift; sourceTree = "<group>"; };
 		4AFCC2191CE8755D00017B4D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = MotionSensor/ViewController.swift; sourceTree = "<group>"; };
+		E661082E20022D09009E5047 /* C4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = C4.xcodeproj; path = C4iOS/C4.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +108,7 @@
 			files = (
 				4AA82A9E1BD514EF008D2095 /* AVFoundation.framework in Frameworks */,
 				4AA82A9A1BD50CC3008D2095 /* CoreMotion.framework in Frameworks */,
+				E661084020022D34009E5047 /* C4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4AFCC2061CE8754400017B4D /* MotionSensor */,
+				E661082E20022D09009E5047 /* C4.xcodeproj */,
 				4AA82A9D1BD514EF008D2095 /* AVFoundation.framework */,
 				4AA82A991BD50CC3008D2095 /* CoreMotion.framework */,
 				4AB3A5AA1BD3D25000B701D7 /* Products */,
@@ -89,6 +153,18 @@
 			name = MotionSensor;
 			sourceTree = "<group>";
 		};
+		E661082F20022D09009E5047 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E661083720022D09009E5047 /* C4.framework */,
+				E661083920022D09009E5047 /* C4Tests-iOS.xctest */,
+				E661083B20022D09009E5047 /* C4.framework */,
+				E661083D20022D09009E5047 /* C4Tests-tvOS.xctest */,
+				E661083F20022D09009E5047 /* C4App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,10 +175,12 @@
 				4AB3A5A51BD3D25000B701D7 /* Sources */,
 				4AB3A5A61BD3D25000B701D7 /* Frameworks */,
 				4AB3A5A71BD3D25000B701D7 /* Resources */,
+				E661084420022D34009E5047 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E661084320022D34009E5047 /* PBXTargetDependency */,
 			);
 			name = MotionSensor;
 			productName = WheelchairSensor;
@@ -137,12 +215,56 @@
 			mainGroup = 4AB3A5A01BD3D25000B701D7;
 			productRefGroup = 4AB3A5AA1BD3D25000B701D7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E661082F20022D09009E5047 /* Products */;
+					ProjectRef = E661082E20022D09009E5047 /* C4.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4AB3A5A81BD3D25000B701D7 /* MotionSensor */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E661083720022D09009E5047 /* C4.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = C4.framework;
+			remoteRef = E661083620022D09009E5047 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E661083920022D09009E5047 /* C4Tests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "C4Tests-iOS.xctest";
+			remoteRef = E661083820022D09009E5047 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E661083B20022D09009E5047 /* C4.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = C4.framework;
+			remoteRef = E661083A20022D09009E5047 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E661083D20022D09009E5047 /* C4Tests-tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "C4Tests-tvOS.xctest";
+			remoteRef = E661083C20022D09009E5047 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E661083F20022D09009E5047 /* C4App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = C4App.app;
+			remoteRef = E661083E20022D09009E5047 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4AB3A5A71BD3D25000B701D7 /* Resources */ = {
@@ -173,6 +295,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E661084320022D34009E5047 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "C4-iOS";
+			targetProxy = E661084220022D34009E5047 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4AB3A5CF1BD3D25000B701D7 /* Debug */ = {
@@ -280,6 +410,7 @@
 		4AB3A5D21BD3D25000B701D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -301,6 +432,7 @@
 		4AB3A5D31BD3D25000B701D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
