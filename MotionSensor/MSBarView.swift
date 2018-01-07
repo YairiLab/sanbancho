@@ -12,7 +12,7 @@ import C4
 class MSBarView {
     private let _baseRectangle: Rectangle
     private let _rectangles   : [Rectangle]
-    private var _data         : [Double]   = []
+    private var _data         : Vector? = nil
     
     class func attach(canvas: View, frame: Rect) -> MSBarView {
         let view = MSBarView(frame)
@@ -34,33 +34,23 @@ class MSBarView {
         }
     }
 
-    func updateData(data: [Double]) {
+    func updateData(data: Vector) {
         self._data = data
-        if let v = getData() {
-            let rs = [v.x, v.y, v.z].enumerated().map { elem in
-                let r = _rectangles[elem.offset]
-                let rect = calcFrame(i: elem.offset, x: elem.element)
-                print(rect, r.frame)
-                r.frame = rect
+        if let v = _data {
+            zip([v.x, v.y, v.z], _rectangles).enumerated().forEach { (offset, elem) in
+                let rect = elem.1
+                let frame = calcFrame(i: offset, x: elem.0)
+                rect.frame = frame
             }
         }
     }
-    
-    func getData() -> Vector? {
-        if !_data.isEmpty {
-            return Vector(x: _data[0], y: _data[1], z: _data[2])
-        } else {
-            return nil
-        }
-    }
-
 
     func calcFrame(i: Int, x: Double) -> Rect {
         let w0 = _baseRectangle.width
         let h0 = _baseRectangle.height
-        let size = Size(0.2*w0*abs(x), h0/5)
+        let size   = Size(0.2*abs(x)*w0, 0.2*h0)
         var center = _baseRectangle.center
-        center.x = 0 < x ? center.x : (center.x - size.width)
+        center.x = 0 < x ? center.x : center.x - size.width
         center.y += -1.3 * size.height * Double(i-1) - 20
         return Rect(center, size)
     }

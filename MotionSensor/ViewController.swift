@@ -28,8 +28,7 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     override func setup() {
         gyroView = MSBarView.attach(canvas: canvas, frame: Rect(20,  80, 280, 200))
         accView  = MSBarView.attach(canvas: canvas, frame: Rect(20, 320, 280, 200))
-        label    = TextShape(text: "foo", font: Font(name: "Helvetica", size: 28)!)
-        label.center = Point(canvas.center.x, 40)
+        label    = createLabel("init")
         canvas.add(label)
         
         let gesture = canvas.addTapGestureRecognizer { _, _, _ in
@@ -44,7 +43,7 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     func startUpdate() {
         sensor.start()
         canvas.backgroundColor = C4Pink
-        timer = C4.Timer(interval: 0.02) { () in
+        timer = C4.Timer(interval: 1) { () in
             self.tick()
         }
         timer?.start()
@@ -84,8 +83,9 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
     }
     
     func log(_ s: String) {
-        label.text = s
-        print(s)
+        canvas.remove(label)
+        label = createLabel(s)
+        canvas.add(label)
     }
     
     func speak(_ s: String) {
@@ -100,12 +100,12 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
         prevData = sensor.getData()
         let (r, a) = prevData
         if let data = r {
-            gyroView.updateData(data: [data.x, data.y, data.z])
+            gyroView.updateData(data: data)
         } else {
             print("failed to get gyro data")
         }
         if let data = a {
-            accView.updateData(data: [data.x, data.y, data.z])
+            accView.updateData(data: data)
         } else {
             print("failed to get acc data")
         }
@@ -123,5 +123,11 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
         }
     }
 
+    private func createLabel(_ s: String) -> TextShape {
+        let label       = TextShape(text: s, font: Font(name: "Helvetica", size: 28)!)!
+        label.center    = Point(canvas.center.x, 40)
+        label.fillColor = lightGray
+        return label
+    }
 }
 

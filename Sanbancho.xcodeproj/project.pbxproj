@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4A64F3741CE877F6000D7204 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFCC20B1CE8755D00017B4D /* Main.storyboard */; };
-		4AA82A9A1BD50CC3008D2095 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA82A991BD50CC3008D2095 /* CoreMotion.framework */; };
-		4AA82A9E1BD514EF008D2095 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA82A9D1BD514EF008D2095 /* AVFoundation.framework */; };
 		4AFCC21A1CE8755D00017B4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2071CE8755D00017B4D /* AppDelegate.swift */; };
 		4AFCC2211CE8755D00017B4D /* MSBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC20E1CE8755D00017B4D /* MSBarView.swift */; };
 		4AFCC2241CE8755D00017B4D /* MSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2111CE8755D00017B4D /* MSLog.swift */; };
@@ -20,7 +18,9 @@
 		4AFCC22C1CE8755D00017B4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2191CE8755D00017B4D /* ViewController.swift */; };
 		E661084020022D34009E5047 /* C4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E661083720022D09009E5047 /* C4.framework */; };
 		E661084120022D34009E5047 /* C4.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E661083720022D09009E5047 /* C4.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E661084C20023509009E5047 /* MSPeripheralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661084B20023509009E5047 /* MSPeripheralManagerDelegate.swift */; };
+		E6EAE3222002668D0020CF43 /* MSPeripheralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAE3212002668D0020CF43 /* MSPeripheralManagerDelegate.swift */; };
+		E6EAE324200267F80020CF43 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA82A9D1BD514EF008D2095 /* AVFoundation.framework */; };
+		E6EAE325200268130020CF43 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA82A991BD50CC3008D2095 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +98,7 @@
 		4AFCC2161CE8755D00017B4D /* MSSpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSSpeechSynthesizer.swift; path = MotionSensor/MSSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		4AFCC2191CE8755D00017B4D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = MotionSensor/ViewController.swift; sourceTree = "<group>"; };
 		E661082E20022D09009E5047 /* C4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = C4.xcodeproj; path = C4iOS/C4.xcodeproj; sourceTree = "<group>"; };
-		E661084B20023509009E5047 /* MSPeripheralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSPeripheralManagerDelegate.swift; sourceTree = "<group>"; };
+		E6EAE3212002668D0020CF43 /* MSPeripheralManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSPeripheralManagerDelegate.swift; path = MotionSensor/MSPeripheralManagerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AA82A9E1BD514EF008D2095 /* AVFoundation.framework in Frameworks */,
-				4AA82A9A1BD50CC3008D2095 /* CoreMotion.framework in Frameworks */,
+				E6EAE325200268130020CF43 /* CoreMotion.framework in Frameworks */,
+				E6EAE324200267F80020CF43 /* AVFoundation.framework in Frameworks */,
 				E661084020022D34009E5047 /* C4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +123,7 @@
 				4AA82A9D1BD514EF008D2095 /* AVFoundation.framework */,
 				4AA82A991BD50CC3008D2095 /* CoreMotion.framework */,
 				4AB3A5AA1BD3D25000B701D7 /* Products */,
+				E6EAE323200267F80020CF43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,9 +169,16 @@
 				4AFCC2141CE8755D00017B4D /* MSResource.swift */,
 				4AFCC2161CE8755D00017B4D /* MSSpeechSynthesizer.swift */,
 				4AFCC2111CE8755D00017B4D /* MSLog.swift */,
-				E661084B20023509009E5047 /* MSPeripheralManagerDelegate.swift */,
+				E6EAE3212002668D0020CF43 /* MSPeripheralManagerDelegate.swift */,
 			);
 			name = custom;
+			sourceTree = "<group>";
+		};
+		E6EAE323200267F80020CF43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AFCC2271CE8755D00017B4D /* MSResource.swift in Sources */,
-				E661084C20023509009E5047 /* MSPeripheralManagerDelegate.swift in Sources */,
+				E6EAE3222002668D0020CF43 /* MSPeripheralManagerDelegate.swift in Sources */,
 				4AFCC2241CE8755D00017B4D /* MSLog.swift in Sources */,
 				4AFCC2251CE8755D00017B4D /* MSPeripheralManager.swift in Sources */,
 				4AFCC2281CE8755D00017B4D /* MSSensor.swift in Sources */,
@@ -425,7 +433,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EJ9YN4K3N2;
 				INFOPLIST_FILE = MotionSensor/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yairilab.MotionSensor;
 				PRODUCT_NAME = MotionSensor;
@@ -447,7 +454,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EJ9YN4K3N2;
 				INFOPLIST_FILE = MotionSensor/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yairilab.MotionSensor;
 				PRODUCT_NAME = MotionSensor;
