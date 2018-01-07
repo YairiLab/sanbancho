@@ -10,18 +10,6 @@ import UIKit
 import CoreBluetooth
 import C4
 
-protocol MSPeripheralManagerDelegate {
-    func log(_ s: String)
-    func getData() -> (Vector?, Vector?)
-    func startLogging()
-    func stopLogging()
-    func startUpdate()
-    func stopUpdate()
-    func beep()
-    func speak(_ s: String)
-    func introduce()
-}
-
 class MSPeripheralManager: NSObject, CBPeripheralManagerDelegate {
     let delegate: MSPeripheralManagerDelegate
     var _manager: CBPeripheralManager!

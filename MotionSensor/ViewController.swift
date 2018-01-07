@@ -13,7 +13,7 @@ import CoreBluetooth
 import C4
 
 typealias ATimer = UIKit.Timer
-class ViewController: UIViewController, MSPeripheralManagerDelegate {
+class ViewController: CanvasController, MSPeripheralManagerDelegate {
     var timer: ATimer? = nil
     var logger: MSLog? = nil
     let startTime = NSDate()
@@ -26,6 +26,10 @@ class ViewController: UIViewController, MSPeripheralManagerDelegate {
     @IBOutlet weak var accView: MSBarView!
     @IBOutlet weak var label: UILabel!
     
+    override func setup() {
+        let rectangle = Rectangle(frame: Rect(0, 0, 100, 200))
+        canvas.add(rectangle)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
