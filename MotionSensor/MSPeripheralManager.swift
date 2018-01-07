@@ -8,10 +8,11 @@
 
 import UIKit
 import CoreBluetooth
+import C4
 
 protocol MSPeripheralManagerDelegate {
     func log(s: String)
-    func getData() -> (Vector3D?, Vector3D?)
+    func getData() -> (Vector?, Vector?)
     func startLogging()
     func stopLogging()
     func startUpdate()

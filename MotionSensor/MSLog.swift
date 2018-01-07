@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import C4
 
 class MSLog {
     let file: FileHandle
@@ -14,10 +15,10 @@ class MSLog {
         self.file = file
     }
     
-    func write(tickCount: Double, gyro: Vector3D?, acc: Vector3D?) {
+    func write(tickCount: Double, gyro: Vector?, acc: Vector?) {
         let tick = NSString(format: "%.13f", tickCount)
-        let sGyro = gyro != nil ? NSString(format: "%.13f,%.13f,%.13f", gyro!.0, gyro!.1, gyro!.2) : ",,"
-        let sAcc = acc != nil ? NSString(format: "%.13f,%.13f,%.13f", acc!.0, acc!.1, acc!.2) : ",,"
+        let sGyro = gyro != nil ? NSString(format: "%.13f,%.13f,%.13f", gyro!.x, gyro!.y, gyro!.z) : ",,"
+        let sAcc = acc != nil ? NSString(format: "%.13f,%.13f,%.13f", acc!.x, acc!.y, acc!.z) : ",,"
         let line = "\(tick),\(sGyro),\(sAcc)\n"
         file.write(line.data(using: String.Encoding.utf8)!)
     }

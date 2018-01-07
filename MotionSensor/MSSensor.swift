@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreMotion
+import C4
 
 class MSSensor: NSObject {
     let motion = CMMotionManager()
@@ -22,25 +23,25 @@ class MSSensor: NSObject {
         motion.stopGyroUpdates()
     }
     
-    func getRotationRate() -> Vector3D? {
+    func getRotationRate() -> Vector? {
         if let data = motion.gyroData {
             let r = data.rotationRate
-            return (r.x, r.y, r.z)
+            return Vector(x: r.x, y: r.y, z: r.z)
         } else {
             return nil
         }
     }
 
-    func getAcceleration() -> Vector3D? {
+    func getAcceleration() -> Vector? {
         if let data = motion.accelerometerData {
             let a = data.acceleration
-            return (a.x, a.y, a.z)
+            return Vector(x: a.x, y: a.y, z: a.z)
         } else {
             return nil
         }
     }
     
-    func getData() -> (Vector3D?, Vector3D?) {
+    func getData() -> (Vector?, Vector?) {
         return (getRotationRate(), getAcceleration())
     }
 }

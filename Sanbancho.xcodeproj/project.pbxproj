@@ -17,7 +17,6 @@
 		4AFCC2271CE8755D00017B4D /* MSResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2141CE8755D00017B4D /* MSResource.swift */; };
 		4AFCC2281CE8755D00017B4D /* MSSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2151CE8755D00017B4D /* MSSensor.swift */; };
 		4AFCC2291CE8755D00017B4D /* MSSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2161CE8755D00017B4D /* MSSpeechSynthesizer.swift */; };
-		4AFCC22A1CE8755D00017B4D /* MSVector2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2171CE8755D00017B4D /* MSVector2D.swift */; };
 		4AFCC22C1CE8755D00017B4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2191CE8755D00017B4D /* ViewController.swift */; };
 		E661084020022D34009E5047 /* C4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E661083720022D09009E5047 /* C4.framework */; };
 		E661084120022D34009E5047 /* C4.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E661083720022D09009E5047 /* C4.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -96,7 +95,6 @@
 		4AFCC2141CE8755D00017B4D /* MSResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSResource.swift; path = MotionSensor/MSResource.swift; sourceTree = "<group>"; };
 		4AFCC2151CE8755D00017B4D /* MSSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSSensor.swift; path = MotionSensor/MSSensor.swift; sourceTree = "<group>"; };
 		4AFCC2161CE8755D00017B4D /* MSSpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSSpeechSynthesizer.swift; path = MotionSensor/MSSpeechSynthesizer.swift; sourceTree = "<group>"; };
-		4AFCC2171CE8755D00017B4D /* MSVector2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSVector2D.swift; path = MotionSensor/MSVector2D.swift; sourceTree = "<group>"; };
 		4AFCC2191CE8755D00017B4D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = MotionSensor/ViewController.swift; sourceTree = "<group>"; };
 		E661082E20022D09009E5047 /* C4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = C4.xcodeproj; path = C4iOS/C4.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,7 +141,6 @@
 				4AFCC2151CE8755D00017B4D /* MSSensor.swift */,
 				4AFCC20E1CE8755D00017B4D /* MSBarView.swift */,
 				4AFCC2141CE8755D00017B4D /* MSResource.swift */,
-				4AFCC2171CE8755D00017B4D /* MSVector2D.swift */,
 				4AFCC2161CE8755D00017B4D /* MSSpeechSynthesizer.swift */,
 				4AFCC2071CE8755D00017B4D /* AppDelegate.swift */,
 				4AFCC20B1CE8755D00017B4D /* Main.storyboard */,
@@ -287,7 +284,6 @@
 				4AFCC2251CE8755D00017B4D /* MSPeripheralManager.swift in Sources */,
 				4AFCC2281CE8755D00017B4D /* MSSensor.swift in Sources */,
 				4AFCC22C1CE8755D00017B4D /* ViewController.swift in Sources */,
-				4AFCC22A1CE8755D00017B4D /* MSVector2D.swift in Sources */,
 				4AFCC2211CE8755D00017B4D /* MSBarView.swift in Sources */,
 				4AFCC2291CE8755D00017B4D /* MSSpeechSynthesizer.swift in Sources */,
 				4AFCC21A1CE8755D00017B4D /* AppDelegate.swift in Sources */,

@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import C4
 
 class MSBarView: UIView {
     private var data: [Double] = []
     
-    var relativeCenter: MSVector2D {
+    var relativeCenter: Vector {
         get {
             let size = self.frame.size
-            return MSVector2D(xf: size.width/2, yf: size.height/2)
+            return Vector(x: Double(size.width/2), y: Double(size.height/2))
         }
     }
     
@@ -23,9 +24,9 @@ class MSBarView: UIView {
         setNeedsDisplay()
     }
     
-    func getDataTriple() -> Vector3D? {
+    func getDataTriple() -> Vector? {
         if !data.isEmpty {
-            return (data[0], data[1], data[2])
+            return Vector(x: data[0], y: data[1], z: data[2])
         } else {
             return nil
         }
@@ -33,8 +34,8 @@ class MSBarView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        if let (x, y, z) = getDataTriple() {
-            let rs = [x, y, z].enumerated().map { elem in toCGRect(i: elem.offset, x: elem.element) }
+        if let v = getDataTriple() {
+            let rs = [v.x, v.y, v.z].enumerated().map { elem in toCGRect(i: elem.offset, x: elem.element) }
             for r in rs {
                 drawBar(rect: r)
             }

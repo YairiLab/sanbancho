@@ -10,15 +10,17 @@ import UIKit
 import CoreMotion
 import AVFoundation
 import CoreBluetooth
+import C4
 
+typealias ATimer = UIKit.Timer
 class ViewController: UIViewController, MSPeripheralManagerDelegate {
-    var timer: Timer? = nil
+    var timer: ATimer? = nil
     var logger: MSLog? = nil
     let startTime = NSDate()
     let sensor = MSSensor()
     let speaker = MSSpeechSynthesizer()
     var peripheral: MSPeripheralManager!
-    var prevData: (Vector3D?, Vector3D?)
+    var prevData: (Vector?, Vector?)
     
     @IBOutlet weak var gyroView: MSBarView!
     @IBOutlet weak var accView: MSBarView!
@@ -81,7 +83,7 @@ class ViewController: UIViewController, MSPeripheralManagerDelegate {
         speak(s: "peep")
     }
     
-    func getData() -> (Vector3D?, Vector3D?) {
+    func getData() -> (Vector?, Vector?) {
         return prevData
     }
     
@@ -98,16 +100,16 @@ class ViewController: UIViewController, MSPeripheralManagerDelegate {
         speak(s: UIDevice.current.name)
     }
     
-    @objc func tick(timer: Timer) {
+    @objc func tick(timer: ATimer) {
         prevData = sensor.getData()
         let (r, a) = prevData
         if let data = r {
-            gyroView.updateData(data: [data.0, data.1, data.2])
+            gyroView.updateData(data: [data.x, data.y, data.z])
         } else {
             print("failed to get gyro data")
         }
         if let data = a {
-            accView.updateData(data: [data.0, data.1, data.2])
+            accView.updateData(data: [data.x, data.y, data.z])
         } else {
             print("failed to get acc data")
         }
