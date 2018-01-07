@@ -13,28 +13,31 @@ import CoreBluetooth
 import C4
 
 class ViewController: CanvasController, MSPeripheralManagerDelegate {
-    var timer: C4.Timer? = nil
-    var logger: MSLog? = nil
+    var timer     : C4.Timer? = nil
+    var logger    : MSLog? = nil
     let startTime = Date()
-    let sensor = MSSensor()
-    let speaker = MSSpeechSynthesizer()
+    let sensor    = MSSensor()
+    let speaker   = MSSpeechSynthesizer()
     var peripheral: MSPeripheralManager!
-    var prevData: (Vector?, Vector?)
+    var prevData  : (Vector?, Vector?)
     
-    @IBOutlet weak var gyroView: MSBarView!
-    @IBOutlet weak var accView: MSBarView!
-    @IBOutlet weak var label: UILabel!
+    var gyroView: MSBarView!
+    var accView : MSBarView!
+    var label   : TextShape!
     
     override func setup() {
+        gyroView = MSBarView.attach(canvas: canvas, frame: Rect(20,  80, 280, 200))
+        accView  = MSBarView.attach(canvas: canvas, frame: Rect(20, 320, 280, 200))
+        label    = TextShape(text: "foo", font: Font(name: "Helvetica", size: 28)!)
+        label.center = Point(canvas.center.x, 40)
+        canvas.add(label)
+        
         let gesture = canvas.addTapGestureRecognizer { _, _, _ in
             self.tapped()
         }
         gesture.numberOfTapsRequired = 3
         
         peripheral = MSPeripheralManager(delegate: self)
-
-        let rectangle = Rectangle(frame: Rect(0, 0, 100, 200))
-        canvas.add(rectangle)
     }
     
     
@@ -44,6 +47,7 @@ class ViewController: CanvasController, MSPeripheralManagerDelegate {
         timer = C4.Timer(interval: 0.02) { () in
             self.tick()
         }
+        timer?.start()
     }
     
     func stopUpdate() {

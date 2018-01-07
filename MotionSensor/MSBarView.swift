@@ -9,51 +9,60 @@
 import UIKit
 import C4
 
-class MSBarView: UIView {
-    private var data: [Double] = []
-    private let rectangles: [Rectangle] = []
-//    init(frame: CGFrame) {
-//        
-//    }
-    var relativeCenter: Vector {
-        get {
-            let size = self.frame.size
-            return Vector(x: Double(size.width/2), y: Double(size.height/2))
+class MSBarView {
+    private let _baseRectangle: Rectangle
+    private let _rectangles   : [Rectangle]
+    private var _data         : [Double]   = []
+    
+    class func attach(canvas: View, frame: Rect) -> MSBarView {
+        let view = MSBarView(frame)
+        canvas.add(view._baseRectangle)
+        for r in view._rectangles {
+            canvas.add(r)
+        }
+        return view
+    }
+    private init(_ frame: Rect) {
+        _baseRectangle = Rectangle(frame: frame)
+        _baseRectangle.fillColor = C4Grey
+        _rectangles = [1, 2, 3].map { _ in
+            let r = Rectangle()
+            r.corner = Size()
+            r.strokeColor = nil
+            r.fillColor = blue
+            return r
+        }
+    }
+
+    func updateData(data: [Double]) {
+        self._data = data
+        if let v = getData() {
+            let rs = [v.x, v.y, v.z].enumerated().map { elem in
+                let r = _rectangles[elem.offset]
+                let rect = calcFrame(i: elem.offset, x: elem.element)
+                print(rect, r.frame)
+                r.frame = rect
+            }
         }
     }
     
-    func updateData(data: [Double]) {
-        self.data = data
-        setNeedsDisplay()
-    }
-    
-    func getDataTriple() -> Vector? {
-        if !data.isEmpty {
-            return Vector(x: data[0], y: data[1], z: data[2])
+    func getData() -> Vector? {
+        if !_data.isEmpty {
+            return Vector(x: _data[0], y: _data[1], z: _data[2])
         } else {
             return nil
         }
     }
 
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        if let v = getDataTriple() {
-            let rs = [v.x, v.y, v.z].enumerated().map { elem in toCGRect(i: elem.offset, x: elem.element) }
-            for r in rs {
-                drawBar(rect: r)
-            }
-        }
-    }
-    
-    func toCGRect(i: Int, x: Double) -> CGRect {
-        let w = Double(frame.width)
-        let h = Double(frame.height)
-        return CGRect(x: w/2, y: 30+(h/4)*Double(i), width: 70 * x, height: h/5)
-    }
-    
-    func drawBar(rect: CGRect) {
-        let bezier = UIBezierPath(rect: rect)
-        UIColor.blue.setFill()
-        bezier.fill()
+
+    func calcFrame(i: Int, x: Double) -> Rect {
+        let w0 = _baseRectangle.width
+        let h0 = _baseRectangle.height
+        let size = Size(0.2*w0*abs(x), h0/5)
+        var center = _baseRectangle.center
+        center.x = 0 < x ? center.x : (center.x - size.width)
+        center.y += -1.3 * size.height * Double(i-1) - 20
+        return Rect(center, size)
     }
 }
+
