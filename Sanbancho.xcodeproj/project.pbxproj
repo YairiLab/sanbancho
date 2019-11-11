@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		416365CD2368588900BCD729 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFCC2091CE8755D00017B4D /* Info.plist */; };
+		41B22F562368199E000B1EA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2071CE8755D00017B4D /* AppDelegate.swift */; };
+		41D3FE45235C86DA007F5F95 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41D3FE40235C86D9007F5F95 /* Default-568h@2x.png */; };
 		4A64F3741CE877F6000D7204 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFCC20B1CE8755D00017B4D /* Main.storyboard */; };
-		4AFCC21A1CE8755D00017B4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2071CE8755D00017B4D /* AppDelegate.swift */; };
 		4AFCC2211CE8755D00017B4D /* MSBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC20E1CE8755D00017B4D /* MSBarView.swift */; };
 		4AFCC2241CE8755D00017B4D /* MSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2111CE8755D00017B4D /* MSLog.swift */; };
 		4AFCC2251CE8755D00017B4D /* MSPeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCC2121CE8755D00017B4D /* MSPeripheralManager.swift */; };
@@ -83,6 +85,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		41D3FE40235C86D9007F5F95 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4AA82A991BD50CC3008D2095 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		4AA82A9D1BD514EF008D2095 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4AB3A5A91BD3D25000B701D7 /* MotionSensor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionSensor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +121,7 @@
 		4AB3A5A01BD3D25000B701D7 = {
 			isa = PBXGroup;
 			children = (
+				41D3FE40235C86D9007F5F95 /* Default-568h@2x.png */,
 				4AFCC2061CE8754400017B4D /* MotionSensor */,
 				E661082E20022D09009E5047 /* C4.xcodeproj */,
 				4AA82A9D1BD514EF008D2095 /* AVFoundation.framework */,
@@ -225,6 +229,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -288,6 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A64F3741CE877F6000D7204 /* Main.storyboard in Resources */,
+				41D3FE45235C86DA007F5F95 /* Default-568h@2x.png in Resources */,
+				416365CD2368588900BCD729 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,12 +308,12 @@
 				4AFCC2271CE8755D00017B4D /* MSResource.swift in Sources */,
 				E6EAE3222002668D0020CF43 /* MSPeripheralManagerDelegate.swift in Sources */,
 				4AFCC2241CE8755D00017B4D /* MSLog.swift in Sources */,
+				41B22F562368199E000B1EA7 /* AppDelegate.swift in Sources */,
 				4AFCC2251CE8755D00017B4D /* MSPeripheralManager.swift in Sources */,
 				4AFCC2281CE8755D00017B4D /* MSSensor.swift in Sources */,
 				4AFCC22C1CE8755D00017B4D /* ViewController.swift in Sources */,
 				4AFCC2211CE8755D00017B4D /* MSBarView.swift in Sources */,
 				4AFCC2291CE8755D00017B4D /* MSSpeechSynthesizer.swift in Sources */,
-				4AFCC21A1CE8755D00017B4D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -413,7 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -433,6 +440,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EJ9YN4K3N2;
 				INFOPLIST_FILE = MotionSensor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yairilab.MotionSensor;
 				PRODUCT_NAME = MotionSensor;
@@ -454,6 +462,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EJ9YN4K3N2;
 				INFOPLIST_FILE = MotionSensor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yairilab.MotionSensor;
 				PRODUCT_NAME = MotionSensor;
